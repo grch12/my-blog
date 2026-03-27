@@ -13,8 +13,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^25.5.0",
     "gray-matter": "^4.0.3",
-    "vitepress": "^1.6.4"
+    "vitepress": "^1.6.4",
+    "vitepress-sidebar": "^1.33.1"
   },
   "type": "module"
 }

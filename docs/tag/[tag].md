@@ -3,12 +3,12 @@ title: 标签
 ---
 
 <script setup>
-import { useData } from "vitepress"
-import { data as allTags } from "../.vitepress/utils/alltags.data"
+import { useData } from "vitepress";
+import { data as tagMap } from "../.vitepress/utils/tagmap.data";
 
 const { params } = useData();
 const currentTag = params.value.tag;
-const posts = allTags.find()
+const posts = tagMap[currentTag];
 </script>
 
 # 标签：{{ currentTag }}

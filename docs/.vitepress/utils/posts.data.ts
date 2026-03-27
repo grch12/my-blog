@@ -1,12 +1,5 @@
 import { createContentLoader } from "vitepress";
-
-interface Post {
-  title: string;
-  url: string;
-  date: string;
-  description?: string;
-  tags?: string[];
-}
+import { createPost, Post } from "../../../defines";
 
 export default createContentLoader("./posts/**/*.md", {
   excerpt: false,
@@ -21,18 +14,7 @@ export default createContentLoader("./posts/**/*.md", {
   transform(raw): Post[] {
     return raw
       .map(
-        ({ url, frontmatter }): Post => ({
-          title: frontmatter.title,
-          url,
-          date: (frontmatter.date as Date).toLocaleString("zh-CN", {
-            timeZone: "UTC",
-            year: "numeric",
-            month: "numeric",
-            day: "numeric",
-          }),
-          description: frontmatter.description,
-          tags: frontmatter.tags,
-        }),
+        ({ url, frontmatter }): Post => createPost(url, frontmatter)
       )
       .filter((p) => p.title && p.date)
       .sort((a, b) => +new Date(b.date) - +new Date(a.date));

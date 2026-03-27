@@ -4,10 +4,15 @@ import matter from "gray-matter";
 
 const POSTS_DIR = path.resolve(__dirname, "../posts");
 
+
+/**
+ * Recursively scans the posts directory and returns an array of all unique tags.
+ * It ignores non-markdown files and directories.
+ * @returns An array of unique tags.
+ */
 function getAllTags(): string[] {
   const tagSet = new Set<string>();
 
-  // 递归读取所有 Markdown 文件
   function scanDir(dir: string) {
     if (!fs.existsSync(dir)) return;
 
