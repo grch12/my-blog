@@ -4,7 +4,6 @@ import matter from "gray-matter";
 
 const POSTS_DIR = path.resolve(__dirname, "../posts");
 
-
 /**
  * Recursively scans the posts directory and returns an array of all unique tags.
  * It ignores non-markdown files and directories.

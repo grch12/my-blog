@@ -1,5 +1,4 @@
 import { createContentLoader } from "vitepress";
-import * as fs from "node:fs/promises";
 
 export default createContentLoader("./posts/**/*.md", {
   excerpt: false,

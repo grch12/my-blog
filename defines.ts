@@ -15,7 +15,10 @@ export interface TagMap {
   [key: string]: Post[];
 }
 
-export function createPost(url: string, frontmatter: Record<string, any>): Post {
+export function createPost(
+  url: string,
+  frontmatter: Record<string, any>,
+): Post {
   return {
     title: frontmatter.title,
     url,
@@ -26,6 +29,6 @@ export function createPost(url: string, frontmatter: Record<string, any>): Post 
       day: "numeric",
     }),
     description: frontmatter.description,
-    tags: frontmatter.tags
-  }
+    tags: frontmatter.tags,
+  };
 }

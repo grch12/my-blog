@@ -13,9 +13,7 @@ export default createContentLoader("./posts/**/*.md", {
    */
   transform(raw): Post[] {
     return raw
-      .map(
-        ({ url, frontmatter }): Post => createPost(url, frontmatter)
-      )
+      .map(({ url, frontmatter }): Post => createPost(url, frontmatter))
       .filter((p) => p.title && p.date)
       .sort((a, b) => +new Date(b.date) - +new Date(a.date));
   },
