@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { data as posts } from "../utils/posts.data";
 import { Post } from "../../../defines";
+import { withBase } from "vitepress";
 
 let archives: {
   [key: string]: Post[];
@@ -21,7 +22,7 @@ posts.forEach((post) => {
       <h2>{{ year }} 年</h2>
       <ul>
         <li v-for="post in archives[year]" :key="post.url" :class="$style.post">
-          <a :href="post.url">{{ post.title }}</a>
+          <a :href="withBase(post.url)">{{ post.title }}</a>
           <span>{{ post.date }}</span>
         </li>
       </ul>

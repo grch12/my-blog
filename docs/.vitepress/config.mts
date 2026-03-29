@@ -19,6 +19,7 @@ export default defineConfig({
       { text: "主页", link: "/" },
       { text: "全部标签", link: "/tag" },
       { text: "归档", link: "/archive" },
+      { text: "关于", link: "/about" },
     ],
 
     sidebar: generateSidebar([

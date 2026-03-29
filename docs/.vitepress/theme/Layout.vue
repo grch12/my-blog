@@ -2,6 +2,7 @@
 import DefaultTheme from "vitepress/theme";
 import { useData } from "vitepress";
 import CommonFooter from "./CommonFooter.vue";
+import Giscus from "./Giscus.vue";
 import { computed } from "vue";
 
 const { Layout } = DefaultTheme;
@@ -22,6 +23,10 @@ const showCommonFooter = computed(() => isPost.value && !hasCustomFooter.value);
 
     <template #doc-footer-before>
       <CommonFooter v-if="showCommonFooter" />
+    </template>
+
+    <template #doc-after>
+      <Giscus v-if="isPost" />
     </template>
   </Layout>
 </template>
