@@ -1,6 +1,8 @@
 import { createContentLoader } from "vitepress";
 import { createPost, TagMap } from "../../../defines";
 
+export declare const data: TagMap;
+
 export default createContentLoader("./posts/**/*.md", {
   excerpt: false,
   /**

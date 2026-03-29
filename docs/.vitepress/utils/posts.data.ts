@@ -1,6 +1,8 @@
 import { createContentLoader } from "vitepress";
 import { createPost, Post } from "../../../defines";
 
+export declare const data: Post[];
+
 export default createContentLoader("./posts/**/*.md", {
   excerpt: false,
   /**

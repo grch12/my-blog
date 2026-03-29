@@ -8,6 +8,10 @@ const { Layout } = DefaultTheme;
 const { frontmatter, page } = useData();
 
 const isPost = computed(() => page.value.filePath.startsWith("posts/"));
+
+const hasCustomFooter = computed(() => !!frontmatter.value.customFooter);
+
+const showCommonFooter = computed(() => isPost.value && !hasCustomFooter.value);
 </script>
 
 <template>
@@ -17,7 +21,7 @@ const isPost = computed(() => page.value.filePath.startsWith("posts/"));
     </template>
 
     <template #doc-footer-before>
-      <CommonFooter v-if="isPost" />
+      <CommonFooter v-if="showCommonFooter" />
     </template>
   </Layout>
 </template>

@@ -1,4 +1,7 @@
 import { createContentLoader } from "vitepress";
+import { Tag } from "../../../defines";
+
+export declare const data: Tag[];
 
 export default createContentLoader("./posts/**/*.md", {
   excerpt: false,
@@ -9,7 +12,7 @@ export default createContentLoader("./posts/**/*.md", {
    * Finally, it maps the entries of the tags object into an array of Tag objects and sorts them by their count in descending order.
    * @returns An array of Tag objects, sorted by their count in descending order.
    */
-  transform(raw) {
+  transform(raw): Tag[] {
     let tags: { [key: string]: number } = {};
 
     raw.forEach(({ frontmatter }) => {

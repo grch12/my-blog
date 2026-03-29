@@ -22,8 +22,11 @@ const { frontmatter } = useData();
     </p>
     <p>
       本站文章若无特殊说明，均按照
-      <a href="//creativecommons.org/licenses/by-nc/4.0/deed.zh-hans" :class="$style.license">
-        Creative Commons 署名-非商业性使用 4.0 协议国际版</a
+      <a
+        href="//creativecommons.org/licenses/by-nc/4.0/deed.zh-hans"
+        :class="$style.license"
+      >
+        知识共享署名-非商业性使用 4.0 协议国际版</a
       >
       发布，转载请注明出处。
     </p>
