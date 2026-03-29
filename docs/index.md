@@ -5,15 +5,15 @@ title: 主页
 
 hero:
   name: "grch12 的博客"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  text: "记录技术与思考"
+  tagline: 既供自己整理知识，也方便他人
   actions:
     - theme: brand
       text: 最新文章
       link: \#最新文章
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 归档
+      link: /archive
 
 # features:
 #   - title: Feature A

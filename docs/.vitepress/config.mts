@@ -4,7 +4,7 @@ import { generateSidebar } from "vitepress-sidebar";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "grch12 的博客",
-  description: "A VitePress Site",
+  description: "记录技术与思考",
   lang: "zh-CN",
   locales: {
     "/": {
@@ -17,6 +17,7 @@ export default defineConfig({
     nav: [
       { text: "主页", link: "/" },
       { text: "全部标签", link: "/tag" },
+      { text: "归档", link: "/archive" },
     ],
 
     sidebar: generateSidebar([

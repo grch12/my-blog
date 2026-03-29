@@ -324,3 +324,5 @@ export default {
 
 > [!TIP]
 > 新标签在服务器重启后才会被创建
+
+本博客的完整源码可以在[这个仓库](//github.com/grch12/my-blog)中找到。
