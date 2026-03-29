@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Post } from "../../../defines";
+import { withBase } from "vitepress";
 defineProps<{ posts: Post[] }>();
 </script>
 
@@ -7,7 +8,7 @@ defineProps<{ posts: Post[] }>();
   <div :class="$style.postList">
     <article v-for="post in posts" :key="post.url" :class="$style.postItem">
       <h2>
-        <a :href="post.url"> {{ post.title }}</a>
+        <a :href="withBase(post.url)"> {{ post.title }}</a>
       </h2>
       <p v-if="post.description">{{ post.description }}</p>
       <div :class="$style.meta">

@@ -5,6 +5,7 @@ import { generateSidebar } from "vitepress-sidebar";
 export default defineConfig({
   title: "grch12 的博客",
   description: "记录技术与思考",
+  base: "/my-blog/",
   lang: "zh-CN",
   locales: {
     "/": {
