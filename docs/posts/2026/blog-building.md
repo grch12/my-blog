@@ -179,7 +179,7 @@ import { data as posts } from "./.vitepress/utils/posts.data";
 我们刚刚在 frontmatter 中为文章添加了标签。假如能借助标签对文章进行整理，就更好了。例如这样：
 
 ```
-/tag          标签总览
+/tag  　　　  标签总览
 /tag/<标签名> 有此标签的所有文章
 ```
 

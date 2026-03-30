@@ -44,7 +44,7 @@ defineProps<{ posts: Post[] }>();
 
 .postItem > p {
   margin-bottom: 16px;
-  margin-left: 0.5em;
+  margin-left: 0.2em;
 }
 
 .meta {

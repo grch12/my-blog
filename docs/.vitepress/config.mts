@@ -1,6 +1,29 @@
 import { defineConfig } from "vitepress";
 import { generateSidebar } from "vitepress-sidebar";
 
+import fs from "fs";
+import path, { basename, parse } from "path";
+import { get } from "http";
+
+const POSTS_DIR = path.resolve(__dirname, "../posts");
+
+function getAllSubDirs(dir: string): string[] {
+  const subDirs: string[] = [];
+
+  if (!fs.existsSync(dir)) return subDirs;
+
+  for (const file of fs.readdirSync(dir)) {
+    const fullPath = path.join(dir, file);
+
+    if (fs.statSync(fullPath).isDirectory()) {
+      subDirs.push(fullPath);
+      subDirs.push(...getAllSubDirs(fullPath));
+    }
+  }
+
+  return subDirs;
+}
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "grch12 的博客",
@@ -29,6 +52,9 @@ export default defineConfig({
         basePath: "/posts/",
         resolvePath: "/posts/",
         useTitleFromFrontmatter: true,
+        manualSortFileNameByPriority: getAllSubDirs(POSTS_DIR)
+          .map((dir) => basename(dir))
+          .sort((a, b) => Number(b) - Number(a)), // sort by dir name, desc
       },
     ]),
 

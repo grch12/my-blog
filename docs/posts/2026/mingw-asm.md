@@ -201,7 +201,7 @@ Disassembly of section .text:
 
 然后，我们需要使用 `ld` 的 `-T` 参数来指定自定义链接脚本。修改 Makefile：
 
-```makefile
+```makefile{6}
 $(BIN): main.obj
 	ld main.obj -o $(BIN) \
 	C:/Windows/System32/msvcrt.dll \
