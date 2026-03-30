@@ -2,8 +2,7 @@ import { defineConfig } from "vitepress";
 import { generateSidebar } from "vitepress-sidebar";
 
 import fs from "fs";
-import path, { basename, parse } from "path";
-import { get } from "http";
+import path, { basename } from "path";
 
 const POSTS_DIR = path.resolve(__dirname, "../posts");
 

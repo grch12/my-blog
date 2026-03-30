@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, watch } from "vue";
 import { useRoute } from "vitepress";
+import { randomBytes } from "node:crypto";
 
 const route = useRoute();
 
@@ -57,7 +58,7 @@ function updateGiscus() {
       {
         giscus: {
           setConfig: {
-            term: route.path,
+            term: route.path.match(/\/?(my-blog\/.*)\.(md|html)/)?.[1],
           },
         },
       },
