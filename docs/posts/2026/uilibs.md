@@ -66,7 +66,7 @@ tags: [C, C++, GUI]
 
 ### [raygui](https://github.com/raysan5/raygui)
 优点：
- - C语言
+ - C 语言
  - 使用起来较为简单
  - 宽松许可证（zlib）
 

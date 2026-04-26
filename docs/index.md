@@ -10,7 +10,7 @@ hero:
   actions:
     - theme: brand
       text: 最新文章
-      link: \#最新文章
+      link: /index\#最新文章
     - theme: alt
       text: 归档
       link: /archive
