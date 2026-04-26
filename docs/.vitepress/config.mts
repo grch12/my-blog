@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress";
 import { generateSidebar } from "vitepress-sidebar";
+import matter from "gray-matter";
 
 import fs from "fs";
 import path, { basename } from "path";
@@ -21,6 +22,21 @@ function getAllSubDirs(dir: string): string[] {
   }
 
   return subDirs;
+}
+
+function sortFilesByDate(dirs: string[]): string[] {
+  let files: string[] = [];
+  dirs.forEach((dir) => {
+    files = [...files, ...fs.readdirSync(dir).filter((f) => f.endsWith(".md")).map((f) => path.join(dir, f))];
+  });
+  files.sort((a, b) => {
+    const contentA = fs.readFileSync(a, "utf-8");
+    const contentB = fs.readFileSync(b, "utf-8");
+    const dateA = new Date(matter(contentA).data.date as string);
+    const dateB = new Date(matter(contentB).data.date as string);
+    return dateB.getTime() - dateA.getTime();
+  });
+  return files.map((f) => path.basename(f));
 }
 
 // https://vitepress.dev/reference/site-config
@@ -53,7 +69,8 @@ export default defineConfig({
         useTitleFromFrontmatter: true,
         manualSortFileNameByPriority: getAllSubDirs(POSTS_DIR)
           .map((dir) => basename(dir))
-          .sort((a, b) => Number(b) - Number(a)), // sort by dir name, desc
+          .sort((a, b) => Number(b) - Number(a)) // sort by dir name, desc
+          .concat(sortFilesByDate(getAllSubDirs(POSTS_DIR))),
       },
     ]),
 
