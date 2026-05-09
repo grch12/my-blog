@@ -117,6 +117,18 @@ int main(void) {
 
 由于这个程序只使用 C 标准库，所以你完全可以在其他操作系统乃至不同架构的机器上编译它，唯一的要求是目标架构的字节序必须为小端序（与 x86 相同）。
 
+### 2026年5月9日更新
+
+上面的预编译可执行文件由于使用了 UTF-8 代码页，所以需要 Windows 10 1803+ 才能正常运行。如果你使用的是老版本 Windows，可以在自行编译时去除下面的宏定义：
+
+```c
+#define USE_UTF8
+```
+
+这会让程序使用 ANSI 代码页，从而可以在旧版 Windows 上运行。
+
+另外，我还做了一个 GUI 版本：[grch12/laa-patcher-gui](https://github.com/grch12/laa-patcher-gui)。这个版本使用 Win32 API，因此是 Windows exclusive。不过它使用 UTF-16 编码，依赖 MSVCRT，因此对旧版 Windows 兼容性更好。
+
 ## 参考
 
 [Windows 和 Windows Server 版本的内存限制 - Win32 apps | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows/win32/memory/memory-limits-for-windows-releases)

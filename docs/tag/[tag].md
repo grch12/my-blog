@@ -9,7 +9,7 @@ import PostList from "../.vitepress/theme/PostList.vue";
 
 const { params } = useData();
 const currentTag = params.value.tag;
-const posts = tagMap[currentTag];
+const posts = tagMap[currentTag].sort((a, b) => +new Date(b.date) - +new Date(a.date));
 </script>
 
 # 标签：{{ currentTag }}

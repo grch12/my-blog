@@ -28,7 +28,7 @@ import { data as allTags } from "../utils/alltags.data";
   border-radius: 50em;
   padding: 4px 10px;
   padding-right: 4px;
-  margin: 0 2px;
+  margin: 4px 2px;
   text-decoration: none !important;
 }
 
