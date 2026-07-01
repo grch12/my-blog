@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { onMounted, watch } from "vue";
-import { useRoute } from "vitepress";
+import { useRoute, useData } from "vitepress";
 
 const route = useRoute();
+const isDark = useData().isDark;
 
 /**
  * Injects Giscus script into the page.
@@ -30,7 +31,12 @@ function injectGiscus() {
   script.setAttribute("data-reactions-enabled", "1");
   script.setAttribute("data-emit-metadata", "0");
   script.setAttribute("data-input-position", "bottom");
-  script.setAttribute("data-theme", "preferred_color_scheme");
+  script.setAttribute(
+    "data-theme",
+    isDark.value
+      ? "https://giscus.app/themes/dark.css"
+      : "https://giscus.app/themes/light.css",
+  );
   script.setAttribute("data-lang", "zh-CN");
   script.setAttribute("data-loading", "lazy");
   script.setAttribute("crossorigin", "anonymous");
@@ -68,11 +74,34 @@ function updateGiscus() {
   }
 }
 
+function updateTheme() {
+  console.log("updateTheme");
+  const iframe = document.querySelector<HTMLIFrameElement>(
+    "iframe.giscus-frame",
+  );
+
+  if (iframe) {
+    iframe.contentWindow?.postMessage(
+      {
+        giscus: {
+          setConfig: {
+            theme: isDark.value
+              ? "https://giscus.app/themes/dark.css"
+              : "https://giscus.app/themes/light.css",
+          },
+        },
+      },
+      "https://giscus.app",
+    );
+  }
+}
+
 onMounted(() => {
   injectGiscus();
 });
 
 watch(() => route.path, updateGiscus);
+watch(isDark, updateTheme);
 </script>
 
 <template>
