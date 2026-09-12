@@ -222,7 +222,7 @@ code_rbracket_end:
 ```c [main.c]
 extern char code_lbracket_start[];
 extern char code_lbracket_end[];
-void emit_code_lbracket(void* buf, size_t* pc, size_t* stack, size_t brackets) {
+void emit_code_lbracket(void* buf, size_t* pc, size_t* stack, size_t* brackets) {
   size_t sz = code_lbracket_end - code_lbracket_start;
   char* mem = (char*)buf + *pc;
   memcpy(mem, code_lbracket_start, sz);
@@ -233,7 +233,7 @@ void emit_code_lbracket(void* buf, size_t* pc, size_t* stack, size_t brackets) {
 
 extern char code_rbracket_start[];
 extern char code_rbracket_end[];
-void emit_code_rbracket(void* buf, size_t* pc, size_t* stack, size_t brackets) {
+void emit_code_rbracket(void* buf, size_t* pc, size_t* stack, size_t* brackets) {
   size_t sz = code_rbracket_end - code_rbracket_start;
   char* mem = (char*)buf + *pc;
   memcpy(mem, code_rbracket_start, sz);
